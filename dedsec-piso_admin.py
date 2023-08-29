@@ -8,8 +8,47 @@ import scapy.all as scapy
 from scapy.layers import http
 import wifi
 import time
+from pystyle import *
+
+dark = Col.dark_gray
+light = Colors.StaticMIX((Col.cyan, Col.purple, Col.gray))
+acc = Colors.StaticMIX((Col.cyan, Col.purple, Col.blue, Col.gray))
+purple = Colors.StaticMIX((Col.purple, Col.blue))
+bpurple = Colors.StaticMIX((Col.purple, Col.cyan))
 
 w_interface = 'wlan0'
+
+def stage(text: str, symbol: str = '...', col1=light, col2=None) -> str:
+    if col2 is None:
+        col2 = light if symbol == '...' else purple
+    if symbol in {'...', '!!!'}:
+        return f"""     {Col.Symbol(symbol, col1, dark)} {col2}{text}{Col.reset}"""
+    else:
+        return f""" {Col.Symbol(symbol, col1, dark)} {col2}{text}{Col.reset}"""
+
+text = r'''
+                                                  
+                            
+                    ▓▓▓▓▓▓██                      
+                    ▓▓▓▓▓▓▓▓▓▓▓▓██                
+                  ▓▓░░██░░░░░░▓▓██                
+                ░░░░░░██▒▒██░░██      I SEE ADMIN PASSWORD             
+                  ░░░░░░░░░░░░▒▒▒▒    I SEE ADMIN PASSWORD           
+                  ▓▓▓▓▓▓▓▓▓▓░░░░▒▒    I SEE ADMIN PASSWORD           
+                  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                  
+                  ░░▓▓▓▓░░▓▓▓▓▓▓                  
+                ██▒▒▓▓▓▓▒▒░░▓▓▓▓                  
+                ▓▓░░▓▓▓▓▓▓▓▓░░                    
+                ░░░░▓▓▓▓▓▓░░░░                    
+                    ░░░░░░░░       CODED BY: 0XBIT     
+                                                  
+
+                    
+'''
+
+text1 = '''      ╒══════════════════════════════════╕
+       │ PISO WIFI ADMIN PASSWORD SNIFFER │
+       ╘══════════════════════════════════╛'''
 
 def check_and_fix_wifi_conflict(interface_name):
     try:
@@ -85,7 +124,7 @@ def main():
     print_wifi_list(open_networks)
 
     try:
-        selected_number = int(input("DEDSEC: "))
+        selected_number = int(input("\n[?] DEDSEC: "))
         if selected_number == 0:
             return menu()
         elif 1 <= selected_number <= len(open_networks):
@@ -108,26 +147,8 @@ def main_code():
 
 def banner():
     os.system('clear')
-    print('''
-                                                  
-                            
-                    ▓▓▓▓▓▓██                      
-                    ▓▓▓▓▓▓▓▓▓▓▓▓██                
-                  ▓▓░░██░░░░░░▓▓██                
-                ░░░░░░██▒▒██░░██      I SEE ADMIN PASSWORD             
-                  ░░░░░░░░░░░░▒▒▒▒    I SEE ADMIN PASSWORD            
-                  ▓▓▓▓▓▓▓▓▓▓░░░░▒▒    I SEE ADMIN PASSWORD            
-                  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                  
-                  ░░▓▓▓▓░░▓▓▓▓▓▓                  
-                ██▒▒▓▓▓▓▒▒░░▓▓▓▓                  
-                ▓▓░░▓▓▓▓▓▓▓▓░░                    
-                ░░░░▓▓▓▓▓▓░░░░                    
-                    ░░░░░░░░                  0XBIT     
-                                                  
-    ╒══════════════════════════════════╕
-    │ PISO WIFI ADMIN PASSWORD SNIFFER │
-    ╘══════════════════════════════════╛
-''')
+    print(Colorate.Diagonal(Colors.DynamicMIX((purple, dark)), (text)))
+    print(((purple)), (text1))
 
 def run_script():
     subprocess.run(["python3", "spoof.py"])
@@ -136,7 +157,7 @@ if __name__ == "__main__":
     check_and_fix_wifi_conflict(w_interface)
     time.sleep(1)
     banner()
-    input('\tPRESS ENTER TO START')
+    input('\n\t  [?] PRESS ENTER TO START [?] \r')
     disconnect_from_wifi()
     main()
 
