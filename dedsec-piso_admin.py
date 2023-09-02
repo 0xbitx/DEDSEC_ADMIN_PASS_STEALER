@@ -11,20 +11,9 @@ import time
 from pystyle import *
 
 dark = Col.dark_gray
-light = Colors.StaticMIX((Col.cyan, Col.purple, Col.gray))
-acc = Colors.StaticMIX((Col.cyan, Col.purple, Col.blue, Col.gray))
 purple = Colors.StaticMIX((Col.purple, Col.blue))
-bpurple = Colors.StaticMIX((Col.purple, Col.cyan))
 
 w_interface = 'wlan0'
-
-def stage(text: str, symbol: str = '...', col1=light, col2=None) -> str:
-    if col2 is None:
-        col2 = light if symbol == '...' else purple
-    if symbol in {'...', '!!!'}:
-        return f"""     {Col.Symbol(symbol, col1, dark)} {col2}{text}{Col.reset}"""
-    else:
-        return f""" {Col.Symbol(symbol, col1, dark)} {col2}{text}{Col.reset}"""
 
 text = r'''
                                                   
@@ -88,7 +77,6 @@ def print_wifi_list(networks):
     for idx, network in enumerate(networks, start=1):
         print(f"{idx}: {network.ssid}")
 
-# Voucher processing functions
 def process_packet(packet):
         if packet.haslayer(http.HTTPRequest):
             pass
@@ -112,7 +100,6 @@ def process_packet(packet):
 def packet_filter(packet):
     process_packet(packet)
 
-# Main functions
 def main():
     os.system('clear')
     open_networks = scan_open_wifi()
