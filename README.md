@@ -9,7 +9,7 @@
 * git clone https://github.com/0xbitx/DEDSEC_ADMIN_PASS_STEALER.git
 * cd DEDSEC_ADMIN_PASS_STEALER
 * pip3 install tabulate pycryptodome
-* sudo python3 dedsec-piso_admin.py
+* sudo ./dedsec-piso_admin
 
 ### TESTED ON FOLLOWING
 * Kali Linux 
