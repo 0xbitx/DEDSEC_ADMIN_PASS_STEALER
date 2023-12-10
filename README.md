@@ -8,7 +8,7 @@
 ### INSTALLATION [ KALI - UBUNTU - TERMUX APP  ]
 * git clone https://github.com/0xbitx/DEDSEC_ADMIN_PASS_STEALER.git
 * cd DEDSEC_ADMIN_PASS_STEALER
-* pip3 install tabulate pycryptodome
+* chmod +x dedsec-piso_admin
 * sudo ./dedsec-piso_admin
 
 ### TESTED ON FOLLOWING
